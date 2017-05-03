@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections.Generic;
 using Assets.Script;
+using UnityEngine.UI;
 
 public class BoardManager : MonoBehaviour
 {
@@ -13,13 +14,13 @@ public class BoardManager : MonoBehaviour
     public Chessman selectedChessman;
 
     private const float TILE_SIZE = 1.0f;
-    private const float TILE_OFFSET = 0.0f;
+    private const float TILE_OFFSET = -4.0f;
     public List<GameObject> chessPrefabs;
     private List<GameObject> activeChessMan;
 
     private Quaternion orientation = Quaternion.Euler(0, 180, 0);
 
-
+    public Button showTeamButton;
     public bool isWhiteTurn = true;
 
     private int selectionX = -1;
@@ -46,9 +47,15 @@ public class BoardManager : MonoBehaviour
                 }
                 else
                 {
-                    // ,´move the chess man
+                    //move the chessman
                     MoveChessman(selectionX, selectionY);
-
+                    if(isWhiteTurn)
+                    {
+                        showTeamButton.GetComponentInChildren<Text>().text = "White's turn";
+                    } else
+                    {
+                        showTeamButton.GetComponentInChildren<Text>().text = "Black's turn";
+                    }
                 }
             }
         }
@@ -122,9 +129,9 @@ public class BoardManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f, LayerMask.GetMask("ChessPlane")))
         {
-            Debug.Log(hit.point);
-            selectionX = (int)hit.point.x;
-            selectionY = (int)hit.point.z;
+            Debug.Log((int)hit.point.z + 3);
+            selectionX = (int)Math.Ceiling(hit.point.x) + 3;
+            selectionY = (int)Math.Ceiling(hit.point.z) + 3;
         }
 
         else

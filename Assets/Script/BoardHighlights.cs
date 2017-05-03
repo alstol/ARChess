@@ -3,15 +3,16 @@ using UnityEngine;
 
 namespace Assets.Script
 {
-    public class BoardHighlights : MonoBehaviour {
+    public class BoardHighlights : MonoBehaviour
+    {
 
-        public  static  BoardHighlights Instance { set; get; }
+        public static BoardHighlights Instance { set; get; }
         public GameObject highlightPrefab;
         private List<GameObject> highlights = new List<GameObject>();
 
         private void Start()
         {
-			Instance = this;
+            Instance = this;
         }
 
         private GameObject GetHighlightObject()
@@ -31,11 +32,11 @@ namespace Assets.Script
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    if (moves[i,j])
+                    if (moves[i, j])
                     {
                         GameObject go = GetHighlightObject();
                         go.SetActive(true);
-                        go.transform.position = new Vector3(i+0.5f, 0, j+0.5f);
+                        go.transform.position = new Vector3(i + 0.5f - 4, 0.1f, j + 0.5f - 4);
                     }
 
                 }
@@ -54,6 +55,6 @@ namespace Assets.Script
             }
         }
     }
-    
-    
+
+
 }
