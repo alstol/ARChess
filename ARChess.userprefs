@@ -1,0 +1,19 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\BoardManager.cs">
+    <Files>
+      <File FileName="Assets\Script\BoardManager.cs" Line="73" Column="17" />
+      <File FileName="Assets\Script\Chessman.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\BoardHighlights.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Pawn.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Queen.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Rook.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Knight.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\King.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
