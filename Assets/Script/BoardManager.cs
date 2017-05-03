@@ -67,7 +67,16 @@ public class BoardManager : MonoBehaviour
             return; //trying pick piece is black piec
         }
 
+        bool hasAtleastOneMove = false;
         allowedMoves = Chessmans[x, y].PossibleMove();
+        for (int i = 0; i < 8; i++)
+            for (int j = 0; j < 8; j++)
+                if (allowedMoves[i, j])
+                    hasAtleastOneMove = true;
+
+        if (!hasAtleastOneMove)
+            return;
+
         selectedChessman = Chessmans[x, y];
         BoardHighlights.Instance.HighLightAllowedMoves(allowedMoves);
     }
@@ -86,7 +95,7 @@ public class BoardManager : MonoBehaviour
                 // If it is the king end the game
                 if (c.GetType() == typeof(King))
                 {
-                    // END THE GAME
+                    EndGame();
                     return;
                 }
                 activeChessMan.Remove(c.gameObject);
@@ -114,7 +123,6 @@ public class BoardManager : MonoBehaviour
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f, LayerMask.GetMask("ChessPlane")))
         {
             Debug.Log(hit.point);
-			Debug.Log ($"HIT: {(int)hit.point.x} - {(int)hit.point.z}");
             selectionX = (int)hit.point.x;
             selectionY = (int)hit.point.z;
         }
@@ -247,4 +255,18 @@ public class BoardManager : MonoBehaviour
         activeChessMan.Add(go);
     }
 
+    private void EndGame()
+    {
+        if (isWhiteTurn)
+            Debug.Log("White team wins");
+        else
+            Debug.Log("Black team wins");
+
+        foreach (GameObject go in activeChessMan)
+            Destroy(go);
+
+        isWhiteTurn = true;
+        BoardHighlights.Instance.Hidehighlights();
+        SpawnAllChessmans();
+    }
 }

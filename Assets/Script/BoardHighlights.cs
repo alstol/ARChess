@@ -7,12 +7,11 @@ namespace Assets.Script
 
         public  static  BoardHighlights Instance { set; get; }
         public GameObject highlightPrefab;
-        private List<GameObject> highlights;
+        private List<GameObject> highlights = new List<GameObject>();
 
         private void Start()
         {
 			Instance = this;
-            highlights = new List<GameObject>();
         }
 
         private GameObject GetHighlightObject()
@@ -46,8 +45,11 @@ namespace Assets.Script
 
         public void Hidehighlights()
         {
-            foreach (GameObject go in highlights)
+            GameObject[] wub;
+            wub = GameObject.FindGameObjectsWithTag("Highlight");
+            foreach (GameObject go in wub)
             {
+                Debug.Log(go);
                 go.SetActive(false);
             }
         }
