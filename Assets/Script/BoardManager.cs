@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;
 using Assets.Script;
 using UnityEngine.UI;
 
@@ -25,6 +24,8 @@ public class BoardManager : MonoBehaviour
 
     private int selectionX = -1;
     private int selectionY = -1;
+
+    public List<Texture> guideImages;
 
     private void Start()
     {
@@ -49,18 +50,62 @@ public class BoardManager : MonoBehaviour
                 {
                     //move the chessman
                     MoveChessman(selectionX, selectionY);
-                    if(isWhiteTurn)
+                    if (isWhiteTurn)
                     {
                         showTeamButton.GetComponentInChildren<Text>().text = "White's turn";
-                    } else
+                    }
+                    else
                     {
                         showTeamButton.GetComponentInChildren<Text>().text = "Black's turn";
                     }
                 }
+                DisplayHelp();
             }
         }
     }
 
+    private void DisplayHelp()
+    {
+        GameObject display = GameObject.FindGameObjectWithTag("DisplayHelp");
+        if (isWhiteTurn)
+        {
+            display.transform.eulerAngles = new Vector3(0, 0, 180);
+        } else
+        {
+            display.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        if(selectedChessman != null)
+        {
+            if (selectedChessman.GetType() == typeof(King))
+            {
+                display.GetComponent<Renderer>().material.mainTexture = guideImages[0];
+            }
+            else if (selectedChessman.GetType() == typeof(Queen))
+            {
+                display.GetComponent<Renderer>().material.mainTexture = guideImages[1];
+            }
+            else if (selectedChessman.GetType() == typeof(Rook))
+            {
+                display.GetComponent<Renderer>().material.mainTexture = guideImages[2];
+            }
+            else if (selectedChessman.GetType() == typeof(Bishop))
+            {
+                display.GetComponent<Renderer>().material.mainTexture = guideImages[3];
+            }
+            else if (selectedChessman.GetType() == typeof(Knight))
+            {
+                display.GetComponent<Renderer>().material.mainTexture = guideImages[4];
+            }
+            else if (selectedChessman.GetType() == typeof(Pawn))
+            {
+                display.GetComponent<Renderer>().material.mainTexture = guideImages[5];
+            }
+        }
+        else
+        {
+            display.GetComponent<Renderer>().material.mainTexture = guideImages[6];
+        }
+    }
 
     private void SelectChessman(int x, int y)
     {
