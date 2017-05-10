@@ -82,6 +82,7 @@
     <Compile Include="Assets\Script\BoardHighlights.cs" />
     <Compile Include="Assets\Script\BoardManager.cs" />
     <Compile Include="Assets\Script\Chessman.cs" />
+    <Compile Include="Assets\Script\ColliderThing.cs" />
     <Compile Include="Assets\Script\King.cs" />
     <Compile Include="Assets\Script\Knight.cs" />
     <Compile Include="Assets\Script\Pawn.cs" />

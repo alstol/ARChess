@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="kappa" size="0.500000 0.500000" />
+    <ImageTarget name="ClickyRedOne" size="1.000000 1.000000" />
+    <ImageTarget name="green" size="1.000000 1.000000" />
+    <ImageTarget name="ClickyRed" size="0.500000 0.500000" />
+    <ImageTarget name="Clicky" size="0.500000 0.500000" />
     <ImageTarget name="qrcodebig" size="8.000000 8.000000" />
     <ImageTarget name="qrcode" size="1.000000 1.000000" />
   </Tracking>
